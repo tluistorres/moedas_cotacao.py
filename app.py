@@ -4,12 +4,10 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 import requests
 
-# Lista de APIs para cotações de moedas
 APIs = {
     'Awesome API': 'https://economia.awesomeapi.com.br/last/{MOEDA}-BRL',
 }
 
-# Moedas disponíveis
 MOEDAS = ['USD', 'EUR', 'JPY', 'ARS', 'MXN', 'BTC', 'ETH', 'LTC']
 
 class MeuAplicativo(App):
@@ -19,7 +17,7 @@ class MeuAplicativo(App):
             link = APIs['Awesome API'].replace('{MOEDA}', moeda)
             try:
                 requisicao = requests.get(link)
-                requisicao.raise_for_status()  # Verifica se a requisição foi bem-sucedida
+                requisicao.raise_for_status()  
                 dic_requisicao = requisicao.json()
                 cotacao = dic_requisicao[f"{moeda}BRL"]["bid"]
                 label = Label(text=f"{moeda} R${cotacao}")
@@ -38,7 +36,7 @@ MeuAplicativo().run()
 
 # Importa as bibliotecas necessárias: Código comentado.
 
-# # Importa as bibliotecas necessárias
+# Importa as bibliotecas necessárias
 # import kivy
 # from kivy.app import App
 # from kivy.uix.gridlayout import GridLayout
@@ -53,37 +51,37 @@ MeuAplicativo().run()
 #     'Alpha Vantage API': 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={MOEDA}&to_currency=BRL&apikey=SEU_API_KEY'
 # }
 
-# # Define as moedas disponíveis
+# Define as moedas disponíveis
 # MOEDAS = ['USD', 'EUR', 'BTC', 'ETH', 'LTC']
 
-# # Cria uma classe para o aplicativo
+# Cria uma classe para o aplicativo
 # class MeuAplicativo(App):
-#     # Define o método build, que é chamado quando o aplicativo é iniciado
+# Define o método build, que é chamado quando o aplicativo é iniciado
 #     def build(self):
-#         # Cria um layout em grade com 1 coluna
+# Cria um layout em grade com 1 coluna
 #         layout = GridLayout(cols=1)
         
-#         # Loop pelas moedas disponíveis
+# Loop pelas moedas disponíveis
 #         for moeda in MOEDAS:
-#             # Substitui o placeholder {MOEDA} pela moeda atual
+# Substitui o placeholder {MOEDA} pela moeda atual
 #             link = APIs['Awesome API'].replace('{MOEDA}', moeda)
             
-#             # Faz uma requisição GET para a API
+# Faz uma requisição GET para a API
 #             requisicao = requests.get(link)
             
-#             # Converte a resposta em um dicionário
+# Converte a resposta em um dicionário
 #             dic_requisicao = requisicao.json()
             
-#             # Extrai a cotação da moeda
+# Extrai a cotação da moeda
 #             cotacao = dic_requisicao[f"{moeda}BRL"]["bid"]
             
-#             # Cria um label com a cotação da moeda
+# Cria um label com a cotação da moeda
 #             label = Label(text=f"{moeda} R${format(float(cotacao), '.2f')}")
             
-#             # Adiciona o label ao layout
+# Adiciona o label ao layout
 #             layout.add_widget(label)
         
-#         # Retorna o layout
+# Retorna o layout
 #         return layout
 
 # # Inicia o aplicativo
